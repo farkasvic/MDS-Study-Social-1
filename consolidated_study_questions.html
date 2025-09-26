@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSCI Complete Study Social - All Questions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        .instructions {
+            background: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .easy { background: #d5f4e6; color: #27ae60; }
+        .medium { background: #fff3cd; color: #f39c12; }
+        .challenging { background: #f8d7da; color: #e74c3c; }
+        
+        .question-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .question-content {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 8px 0;
+            overflow-x: auto;
+            border: 1px solid #4a5568;
+            font-size: 0.85em;
+        }
+        
+        .file-structure {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 8px 0;
+            white-space: pre-line;
+            font-size: 0.85em;
+        }
+        
+        .solution-toggle {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 0.9em;
+        }
+        
+        .solution-toggle:hover {
+            background: #2980b9;
+        }
+        
+        .solution {
+            display: none;
+            background: #e8f6f3;
+            border: 2px solid #1abc9c;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .solution.show {
+            display: block;
+        }
+        
+        .solution h4 {
+            color: #16a085;
+            margin-top: 0;
+        }
+        
+        .tips {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+        
+        .collaboration-note {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .command {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 6px;
+        }
+        
+        .error-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .success-box {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .regex-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+            margin: 8px 0;
+        }
+        
+        .regex-table th, .regex-table td {
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            text-align: left;
+        }
+        
+        .regex-table th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .good-bad {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .good, .bad {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .good {
+            background: #f0f8f0;
+        }
+        
+        .bad {
+            background: #f8f0f0;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DSCI Complete Study Social</h1>
+        <p class="subtitle">Virtual Environments • Project Organization • RegEx • Python Functions • Classes • Style</p>
+        
+        <div class="collaboration-note">
+            <strong>Ultimate Team Challenge:</strong> Work in groups of 3-4 people through ALL 12 questions covering the full spectrum of data science computing skills. Mix and match topics based on what you need to review most!
+        </div>
+        
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><strong>DSCI 521 Topics (Computing Platforms):</strong></li>
+                <li><a href="#q1">Q1: Environment Setup (Easy)</a></li>
+                <li><a href="#q2">Q2: File Naming Detective (Easy)</a></li>
+                <li><a href="#q3">Q3: Environment Sharing Challenge (Medium)</a></li>
+                <li><a href="#q4">Q4: RegEx Data Cleaning (Medium)</a></li>
+                <li><a href="#q5">Q5: Project Setup & Environment Integration (Challenging)</a></li>
+                <li><a href="#q6">Q6: Advanced RegEx & File Organization (Challenging)</a></li>
+                
+                <li style="margin-top: 15px;"><strong>DSCI 511 Topics (Python Programming):</strong></li>
+                <li><a href="#q7">Q7: Function Fundamentals & Testing (Easy)</a></li>
+                <li><a href="#q8">Q8: Code Style & PEP 8 (Easy)</a></li>
+                <li><a href="#q9">Q9: Advanced Function Features & Error Handling (Medium)</a></li>
+                <li><a href="#q10">Q10: Object-Oriented Design (Medium)</a></li>
+                <li><a href="#q11">Q11: Advanced Python Features & Testing (Challenging)</a></li>
+                <li><a href="#q12">Q12: Debugging & Integration Challenge (Challenging)</a></li>
+            </ul>
+        </div>
+        
+        <div class="instructions">
+            <h3>Master Study Session Guidelines</h3>
+            <ul>
+                <li><strong>Choose Your Focus:</strong> Pick questions based on what you need to review most</li>
+                <li><strong>Team Rotation:</strong> Switch who leads discussion for each question</li>
+                <li><strong>Cross-Topic Connections:</strong> Discuss how concepts connect across courses</li>
+                <li><strong>Practical Application:</strong> Try running code examples when possible</li>
+                <li><strong>Teaching Others:</strong> Explain concepts in your own words to teammates</li>
+                <li><strong>Real-World Context:</strong> Connect each skill to data science workflows</li>
+            </ul>
+        </div>
+
+        <!-- DSCI 521 QUESTIONS -->
+        <div class="topic-header" id="dsci521">
+            📁 DSCI 521: Computing Platforms for Data Science
+        </div>
+
+        <div class="question-card" id="q1">
+            <div class="difficulty easy">EASY</div>
+            <div class="question-title">Question 1: Environment Setup</div>
+            <div class="question-content">
+                <p>Your teammate Sarah is new to conda and asks for help. She wants to create a new environment called "data-analysis" with Python 3.11 and install pandas version 2.1.0. She also heard about conda-forge and wants to use it.</p>
+                
+                <p><strong>Part A:</strong> What commands should Sarah run? Write them in order.</p>
+                <p><strong>Part B:</strong> How can Sarah verify that her environment was created successfully and that pandas is the correct version?</p>
+                <p><strong>Part C:</strong> If Sarah forgets the name of her environment later, how can she list all her environments?</p>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution1')">Show Solution</button>
+            <div id="solution1" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Part A:</strong></p>
+                <div class="code-block"># First ensure conda-forge is set up (if not done already)
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+
+# Create the environment
+conda create -n data-analysis python=3.11 pandas=2.1.0
+
+# Activate the environment
+conda activate data-analysis</div>
+                
+                <p><strong>Part B:</strong></p>
+                <div class="code-block"># Check if environment activated (should see (data-analysis) in prompt)
+# List packages to verify pandas version
+conda list pandas
+
+# Alternative: check Python and import pandas
+python -c "import pandas as pd; print(pd.__version__)"</div>
+                
+                <p><strong>Part C:</strong></p>
+                <div class="code-block"># List all environments
+conda env list
+# OR
+conda info --envs</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q2">
+            <div class="difficulty easy">EASY</div>
+            <div class="question-title">Question 2: File Naming Detective</div>
+            <div class="question-content">
+                <p>Your group is cleaning up a messy project directory. You found these files:</p>
+                <div class="file-structure">Final Report.docx
+data analysis (1).py
+Figure1.png
+my-awesome-script_v2.R
+2024-01-15_experiment-results.csv
+project notes!!.txt
+analysis_draft.ipynb
+raw_data_survey_2024_jan.xlsx</div>
+                
+                <p><strong>Your task:</strong> As a group, categorize each filename as "Good", "Needs Improvement", or "Terrible". For files that need improvement, suggest better names following the three principles: machine readable, human readable, plays well with default ordering.</p>
+                
+                <div class="tips">
+                    <strong>Hint:</strong> Consider spaces, special characters, descriptiveness, and ordering when evaluating!
+                </div>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution2')">Show Solution</button>
+            <div id="solution2" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Categorization:</strong></p>
+                <ul>
+                    <li><strong>Good:</strong>
+                        <ul>
+                            <li><code>2024-01-15_experiment-results.csv</code> - Perfect! Date first, descriptive, proper delimiters</li>
+                            <li><code>analysis_draft.ipynb</code> - Good structure and descriptive</li>
+                        </ul>
+                    </li>
+                    <li><strong>Needs Improvement:</strong>
+                        <ul>
+                            <li><code>my-awesome-script_v2.R</code> - Good structure but "awesome" isn't descriptive</li>
+                            <li><code>raw_data_survey_2024_jan.xlsx</code> - Good but should use ISO date format</li>
+                        </ul>
+                    </li>
+                    <li><strong>Terrible:</strong>
+                        <ul>
+                            <li><code>Final Report.docx</code> - Spaces, not descriptive enough</li>
+                            <li><code>data analysis (1).py</code> - Spaces, parentheses, uninformative</li>
+                            <li><code>Figure1.png</code> - No padding, not descriptive</li>
+                            <li><code>project notes!!.txt</code> - Spaces, special characters</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p><strong>Better Names:</strong></p>
+                <div class="code-block">Final Report.docx → 2024-01-15_final-report_survey-analysis.docx
+data analysis (1).py → 01_data-analysis_exploratory.py
+Figure1.png → fig01_survey-results_age-distribution.png
+my-awesome-script_v2.R → 02_statistical-analysis_survey-data.R
+project notes!!.txt → 2024-01-15_project-notes_meeting-summary.txt
+raw_data_survey_2024_jan.xlsx → 2024-01-15_raw-data_survey-responses.xlsx</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q3">
+            <div class="difficulty medium">MEDIUM</div>
+            <div class="question-title">Question 3: Environment Sharing Challenge</div>
+            <div class="question-content">
+                <p>Your team is collaborating on a machine learning project. Alex created an environment and shared this <code>environment.yaml</code> file:</p>
+                
+                <div class="code-block">name: ml-project
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pandas
+  - scikit-learn=1.3.0
+  - matplotlib
+  - jupyter
+  - pip
+  - pip:
+    - seaborn==0.12.0
+    - requests</div>
+                
+                <p><strong>Part A:</strong> What potential issues do you see with this environment file for team collaboration?</p>
+                <p><strong>Part B:</strong> Your teammate Jamie is on Windows while Alex uses macOS. When Jamie tries to create the environment, some packages fail to install. What might be causing this and how would you fix it?</p>
+                <p><strong>Part C:</strong> Write the commands to create this environment, add a new package (numpy=1.24.0), and update the environment file properly.</p>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution3')">Show Solution</button>
+            <div id="solution3" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Part A - Issues identified:</strong></p>
+                <ul>
+                    <li>Missing version numbers for pandas, matplotlib, jupyter (not reproducible)</li>
+                    <li>Two channels listed (conda-forge and defaults) may cause conflicts</li>
+                    <li>Mixing conda and pip packages can cause dependency resolution issues</li>
+                    <li>No Python patch version specified (3.10 vs 3.10.8)</li>
+                </ul>
+                
+                <p><strong>Part B:</strong> Cross-platform issues likely caused by:</p>
+                <ul>
+                    <li>Some builds might be OS-specific when versions aren't pinned</li>
+                    <li>Different architectures (Intel vs ARM vs x86)</li>
+                    <li>The file might have been exported with <code>conda env export</code> (full export) instead of <code>--from-history</code></li>
+                </ul>
+                
+                <p><strong>Fix:</strong> Use <code>--from-history</code> flag and specify versions manually</p>
+                
+                <p><strong>Part C - Commands:</strong></p>
+                <div class="code-block"># Create environment from file
+conda env create -f environment.yaml
+
+# Activate environment
+conda activate ml-project
+
+# Add numpy
+conda install numpy=1.24.0
+
+# Update environment file (recommended approach)
+# Edit environment.yaml manually to add numpy=1.24.0
+# OR export with --from-history and edit
+conda env export --from-history -f environment.yaml
+
+# Better approach: manually maintain environment.yaml
+# Then recreate environment to test:
+conda env remove -n ml-project
+conda env create -f environment.yaml</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q4">
+            <div class="difficulty medium">MEDIUM</div>
+            <div class="question-title">Question 4: RegEx Data Cleaning</div>
+            <div class="question-content">
+                <p>Your team received a messy dataset with user contact information. You need to use regular expressions to clean and validate the data. Here are some sample entries:</p>
+                
+                <div class="code-block">john.doe@email.com
+Jane_Smith@company.org
+Contact: (555) 123-4567
+Phone: 555.987.6543
+555-111-2222
+email: bob@domain.co.uk
+invalid-email@
+(604) 555-0123</div>
+                
+                <p><strong>Part A:</strong> Write a regex pattern that matches valid email addresses from the sample data.</p>
+                <p><strong>Part B:</strong> Write a regex pattern that matches all the phone number formats shown.</p>
+                <p><strong>Part C:</strong> The dataset also contains dates in multiple formats. Write regex patterns for these date formats:</p>
+                <ul>
+                    <li>2024-01-15 (ISO format)</li>
+                    <li>01/15/2024 (US format)</li>
+                    <li>15-Jan-2024 (Day-Month-Year with abbreviated month)</li>
+                </ul>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution4')">Show Solution</button>
+            <div id="solution4" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Part A - Email Pattern:</strong></p>
+                <div class="code-block"># Basic email pattern
+[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}
+
+# Explanation:
+# [A-Za-z0-9._%-]+  : username part (letters, numbers, dots, underscores, %, -)
+# @                  : literal @ symbol
+# [A-Za-z0-9.-]+     : domain name (letters, numbers, dots, hyphens)
+# \.                 : literal dot (escaped)
+# [A-Za-z]{2,4}      : top-level domain (2-4 letters)</div>
+                
+                <p><strong>Part B - Phone Number Pattern:</strong></p>
+                <div class="code-block"># Pattern for all phone formats shown
+(\([0-9]{3}\)\s?|[0-9]{3}[-.]?)[0-9]{3}[-.]?[0-9]{4}
+
+# Alternative - simpler approach matching each format separately:
+# Format 1: (555) 123-4567
+\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}
+
+# Format 2: 555.987.6543
+[0-9]{3}\.[0-9]{3}\.[0-9]{4}
+
+# Format 3: 555-111-2222
+[0-9]{3}-[0-9]{3}-[0-9]{4}</div>
+                
+                <p><strong>Part C - Date Patterns:</strong></p>
+                <div class="code-block"># ISO format: 2024-01-15
+[0-9]{4}-[0-9]{2}-[0-9]{2}
+
+# US format: 01/15/2024
+[0-9]{2}/[0-9]{2}/[0-9]{4}
+
+# Day-Month-Year: 15-Jan-2024
+[0-9]{1,2}-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-[0-9]{4}</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q5">
+            <div class="difficulty challenging">CHALLENGING</div>
+            <div class="question-title">Question 5: Project Setup & Environment Integration</div>
+            <div class="question-content">
+                <p>Your team is starting a new data science project analyzing social media sentiment. You need to set up the project structure, create appropriate environments for both Python and R components, and ensure reproducibility.</p>
+                
+                <p><strong>Requirements:</strong></p>
+                <ul>
+                    <li>Python component: web scraping, data cleaning, and ML modeling</li>
+                    <li>R component: statistical analysis and visualization</li>
+                    <li>Project should be shareable and reproducible</li>
+                    <li>Data files should never be accidentally modified</li>
+                    <li>Multiple team members will collaborate</li>
+                </ul>
+                
+                <p><strong>Part A:</strong> Design the complete project directory structure. Include all necessary folders and files.</p>
+                <p><strong>Part B:</strong> Create the conda environment specifications for the Python component (include: requests, beautifulsoup4, pandas, scikit-learn, jupyter).</p>
+                <p><strong>Part C:</strong> Write the terminal commands a new team member should run to set up both environments and verify everything works.</p>
+                <p><strong>Part D:</strong> Your teammate accidentally modified a file in the raw data folder. How would you prevent this in the future?</p>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution5')">Show Solution</button>
+            <div id="solution5" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Part A - Project Structure:</strong></p>
+                <div class="file-structure">social-media-sentiment/
+├── README.md
+├── .gitignore
+├── environment.yaml          # Python environment
+├── renv.lock                 # R environment (if using R)
+├── data/
+│   ├── raw/                 # Original data (read-only)
+│   │   ├── tweets_raw.json
+│   │   └── survey_responses.csv
+│   └── processed/           # Cleaned/transformed data
+│       ├── tweets_cleaned.csv
+│       └── sentiment_scores.csv
+├── src/                     # Source code
+│   ├── python/
+│   │   ├── 01_data_scraping.py
+│   │   ├── 02_data_cleaning.py
+│   │   └── 03_ml_modeling.py
+│   └── r/
+│       ├── 01_statistical_analysis.R
+│       └── 02_visualization.R
+├── reports/                 # Analysis outputs
+│   ├── notebooks/
+│   │   ├── exploratory_analysis.ipynb
+│   │   └── model_evaluation.ipynb
+│   ├── figures/
+│   │   ├── fig01_sentiment_distribution.png
+│   │   └── fig02_time_series_trends.png
+│   └── final_report.md
+├── doc/                     # Documentation
+│   ├── data_dictionary.md
+│   └── methodology.md
+└── tests/                   # Unit tests
+    ├── test_data_cleaning.py
+    └── test_modeling.py</div>
+                
+                <p><strong>Part B - Environment Specification:</strong></p>
+                <div class="code-block"># environment.yaml
+name: social-sentiment-python
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - requests=2.31.0
+  - beautifulsoup4=4.12.2
+  - pandas=2.0.3
+  - scikit-learn=1.3.0
+  - jupyter=1.0.0
+  - numpy=1.24.3
+  - matplotlib=3.7.1
+  - seaborn=0.12.2
+  - ipykernel  # For Jupyter integration</div>
+                
+                <p><strong>Part C - Setup Commands:</strong></p>
+                <div class="code-block"># Clone the repository (assuming it's on GitHub)
+git clone https://github.com/team/social-media-sentiment.git
+cd social-media-sentiment
+
+# Python environment setup
+conda env create -f environment.yaml
+conda activate social-sentiment-python
+
+# Verify Python setup
+python -c "import requests, bs4, pandas, sklearn; print('All packages imported successfully')"
+
+# Set raw data permissions (Unix/Mac)
+chmod -R 444 data/raw/  # Read-only for everyone</div>
+                
+                <p><strong>Part D - Data Protection Strategies:</strong></p>
+                <ul>
+                    <li><strong>File permissions:</strong> Make <code>data/raw/</code> read-only using <code>chmod 444</code></li>
+                    <li><strong>Git strategies:</strong> Add <code>data/raw/*</code> to <code>.gitignore</code> after first commit</li>
+                    <li><strong>Code practices:</strong> Always read from <code>data/raw/</code> and write to <code>data/processed/</code></li>
+                    <li><strong>Documentation:</strong> Clear README instructions about not modifying raw data</li>
+                    <li><strong>Code review:</strong> Review all code that touches data files</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q6">
+            <div class="difficulty challenging">CHALLENGING</div>
+            <div class="question-title">Question 6: Advanced RegEx & File Organization</div>
+            <div class="question-content">
+                <p>Your research team has accumulated thousands of data files over several years with inconsistent naming. You need to use regex and command-line tools to reorganize and rename them systematically.</p>
+                
+                <p><strong>Current file examples:</strong></p>
+                <div class="code-block">Survey_2023_Jan_Raw_Data.xlsx
+experiment-results-2022-march-cleaned.csv
+data_processing_script_v3_final_FINAL.py
+Analysis Report March 2023.docx
+figure_1_experiment_A_2022.png</div>
+                
+                <p><strong>Part A:</strong> Write regex patterns to identify and extract:</p>
+                <ul>
+                    <li>Year (4 digits)</li>
+                    <li>Month (both abbreviated like "Jan" and full like "January")</li>
+                    <li>File type category (survey, experiment, analysis, figure, etc.)</li>
+                </ul>
+                
+                <p><strong>Part B:</strong> Create a systematic renaming scheme that follows best practices. Show how you would rename each file above.</p>
+                
+                <p><strong>Part C:</strong> Write bash/terminal commands using regex to find all files containing version numbers (v1, v2, version_3, etc.)</p>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution6')">Show Solution</button>
+            <div id="solution6" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Part A - RegEx Patterns:</strong></p>
+                <div class="code-block"># Year extraction (4 digits)
+[0-9]{4}
+
+# Month extraction - abbreviated
+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)
+
+# Month extraction - full names (case insensitive)
+(?i)(january|february|march|april|may|june|july|august|september|october|november|december)
+
+# File type category extraction
+(?i)(survey|experiment|analysis|figure|data|report)</div>
+                
+                <p><strong>Part B - Systematic Renaming:</strong></p>
+                <div class="code-block"># Original → Renamed
+Survey_2023_Jan_Raw_Data.xlsx → 2023-01-15_survey_raw-data.xlsx
+experiment-results-2022-march-cleaned.csv → 2022-03-15_experiment_results-cleaned.csv
+data_processing_script_v3_final_FINAL.py → 2023-01-15_script_data-processing_v03.py
+Analysis Report March 2023.docx → 2023-03-15_report_analysis-summary.docx
+figure_1_experiment_A_2022.png → 2022-12-01_fig01_experiment-a-results.png</div>
+                
+                <p><strong>Part C - Terminal Commands:</strong></p>
+                <div class="code-block"># Find all files with version numbers
+ls | grep -E "(v[0-9]+|version[_-]?[0-9]+)"
+find . -name "*v[0-9]*" -o -name "*version*"
+
+# Alternative using more flexible pattern
+ls | grep -iE "(v\.?[0-9]+|version[_-]?[0-9]+|final|updated|new)"
+
+# Group files by year
+for year in 2022 2023 2024; do
+    echo "=== Files from $year ==="
+    ls | grep "$year"
+done</div>
+            </div>
+        </div>
+
+        <!-- DSCI 511 QUESTIONS -->
+        <div class="topic-header" id="dsci511">
+            🐍 DSCI 511: Python Programming for Data Science
+        </div>
+
+        <div class="question-card" id="q7">
+            <div class="difficulty easy">EASY</div>
+            <div class="question-title">Question 7: Function Fundamentals & Testing</div>
+            <div class="question-content">
+                <p>Your team is building a data processing pipeline and needs to create well-documented, tested functions.</p>
+                
+                <p><strong>Part A:</strong> Write a function called <code>normalize_scores</code> that takes a list of test scores and returns them normalized to a 0-100 scale. Include proper docstring with NumPy/SciPy style.</p>
+                
+                <p><strong>Part B:</strong> Write at least 3 unit tests using assert statements following the AAA (Arrange-Act-Assert) pattern.</p>
+                
+                <p><strong>Part C:</strong> What are potential side effects this function might have? How would you avoid them?</p>
+                
+                <div class="tips">
+                    <strong>Hint:</strong> Consider edge cases like empty lists, negative scores, or all zeros. Think about what "normalized" means mathematically.
+                </div>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution7')">Show Solution</button>
+            <div id="solution7" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Part A - Function with Docstring:</strong></p>
+                <div class="code-block">def normalize_scores(scores: list) -> list:
+    """
+    Normalize a list of scores to a 0-100 scale based on min-max normalization.
+    
+    Parameters
+    ----------
+    scores : list
+        List of numerical scores to normalize
+        
+    Returns
+    -------
+    list
+        List of scores normalized to 0-100 scale
+        
+    Examples
+    --------
+    >>> normalize_scores([50, 75, 100])
+    [0.0, 50.0, 100.0]
+    """
+    if not scores:
+        return []
+    
+    if len(scores) == 1:
+        return [50.0]  # Single score defaults to middle
+    
+    min_score = min(scores)
+    max_score = max(scores)
+    
+    # Handle case where all scores are identical
+    if max_score == min_score:
+        return [50.0] * len(scores)
+    
+    normalized = []
+    for score in scores:
+        norm_score = 100 * (score - min_score) / (max_score - min_score)
+        normalized.append(norm_score)
+    
+    return normalized</div>
+                
+                <p><strong>Part B - Unit Tests:</strong></p>
+                <div class="code-block"># Test 1: Normal case
+# Arrange
+scores = [50, 75, 100]
+expected = [0.0, 50.0, 100.0]
+
+# Act
+result = normalize_scores(scores)
+
+# Assert
+assert result == expected, f"Expected {expected}, got {result}"
+
+# Test 2: All identical scores
+# Arrange
+identical_scores = [80, 80, 80]
+expected_identical = [50.0, 50.0, 50.0]
+
+# Act
+result_identical = normalize_scores(identical_scores)
+
+# Assert
+assert result_identical == expected_identical
+
+# Test 3: Empty list edge case
+# Arrange
+empty_scores = []
+expected_empty = []
+
+# Act
+result_empty = normalize_scores(empty_scores)
+
+# Assert
+assert result_empty == expected_empty</div>
+                
+                <p><strong>Part C - Side Effects:</strong></p>
+                <ul>
+                    <li><strong>No side effects in this implementation</strong> - function returns new list</li>
+                    <li><strong>Good practices followed:</strong> Function has single responsibility, returns new data structure, handles edge cases gracefully</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q8">
+            <div class="difficulty easy">EASY</div>
+            <div class="question-title">Question 8: Code Style & PEP 8</div>
+            <div class="question-content">
+                <p>Your team received this code from a colleague. As a group, identify all the PEP 8 violations and fix them:</p>
+                
+                <div class="code-block">def calculateStatistics(data_list,return_median=True):
+    """calculate basic stats"""
+    import statistics
+    mean=sum(data_list)/len(data_list)
+    if return_median==True:
+        median=statistics.median( data_list )
+        return{'mean':mean,'median':median}
+    else:
+        return {'mean':mean}
+
+# Usage
+myData=[1,2,3,4,5,6,7,8,9,10]
+results=calculateStatistics(myData,False)
+print("Mean is",results['mean']) # The mean value</div>
+                
+                <p><strong>Your tasks:</strong></p>
+                <ul>
+                    <li>Identify at least 8 PEP 8 violations</li>
+                    <li>Rewrite the code following proper style guidelines</li>
+                    <li>Improve the docstring to NumPy/SciPy format</li>
+                    <li>Suggest variable name improvements</li>
+                </ul>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution8')">Show Solution</button>
+            <div id="solution8" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>PEP 8 Violations:</strong></p>
+                <ol>
+                    <li><strong>Function name:</strong> <code>calculateStatistics</code> should be <code>calculate_statistics</code></li>
+                    <li><strong>Parameter spacing:</strong> Missing space after comma</li>
+                    <li><strong>Assignment spacing:</strong> Missing spaces around =</li>
+                    <li><strong>Comparison:</strong> <code>return_median==True</code> should be just <code>return_median</code></li>
+                    <li><strong>Dictionary formatting:</strong> Missing spaces after colons</li>
+                    <li><strong>Variable names:</strong> <code>myData</code> should be <code>my_data</code></li>
+                    <li><strong>Import placement:</strong> Should be at top of file</li>
+                </ol>
+                
+                <p><strong>Corrected Code:</strong></p>
+                <div class="code-block">import statistics
+
+
+def calculate_statistics(data_list: list, return_median: bool = True) -> dict:
+    """
+    Calculate basic statistics for a list of numbers.
+    
+    Parameters
+    ----------
+    data_list : list
+        List of numerical values
+    return_median : bool, optional
+        Whether to include median, by default True
+        
+    Returns
+    -------
+    dict
+        Dictionary containing 'mean' and optionally 'median'
+    """
+    mean = sum(data_list) / len(data_list)
+    
+    if return_median:
+        median = statistics.median(data_list)
+        return {'mean': mean, 'median': median}
+    else:
+        return {'mean': mean}
+
+
+# Usage
+sample_data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+results = calculate_statistics(sample_data, False)
+print(f"Mean is {results['mean']}")</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q9">
+            <div class="difficulty medium">MEDIUM</div>
+            <div class="question-title">Question 9: Advanced Function Features & Error Handling</div>
+            <div class="question-content">
+                <p>Create a function called <code>safe_divide_lists</code> that:</p>
+                <ul>
+                    <li>Takes two lists and performs element-wise division</li>
+                    <li>Accepts optional arguments for handling division by zero</li>
+                    <li>Uses *args and **kwargs</li>
+                    <li>Returns multiple values: (results, errors_encountered)</li>
+                    <li>Has proper error handling with try/except</li>
+                </ul>
+                
+                <div class="code-block"># Should work like this:
+results, errors = safe_divide_lists([10, 20, 30], [2, 0, 5], 
+                                  default_value='skip',
+                                  precision=2)
+# Results: [5.0, 15.0], errors: ['Division by zero at index 1']</div>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution9')">Show Solution</button>
+            <div id="solution9" class="solution">
+                <h4>Solution:</h4>
+                <div class="code-block">def safe_divide_lists(numerators: list, denominators: list, 
+                     default_value='skip', precision=None, 
+                     *args, **kwargs) -> tuple:
+    """
+    Perform element-wise division with error handling.
+    
+    Parameters
+    ----------
+    numerators : list
+        List of numbers to be divided
+    denominators : list  
+        List of numbers to divide by
+    default_value : str or float, optional
+        How to handle division by zero, by default 'skip'
+    precision : int, optional
+        Decimal places to round results, by default None
+        
+    Returns
+    -------
+    tuple
+        (results_list, errors_list)
+    """
+    results = []
+    errors = []
+    
+    # Handle lists of different lengths
+    max_length = min(len(numerators), len(denominators))
+    if len(numerators) != len(denominators):
+        errors.append(f"Lists have different lengths, processing first {max_length} elements")
+    
+    # Process each pair
+    for i in range(max_length):
+        try:
+            numerator = numerators[i]
+            denominator = denominators[i]
+            
+            # Check for division by zero
+            if denominator == 0:
+                if default_value == 'skip':
+                    errors.append(f"Division by zero at index {i}")
+                    continue
+                elif default_value == 'zero':
+                    result = 0
+                elif isinstance(default_value, (int, float)):
+                    result = default_value
+                else:
+                    errors.append(f"Invalid default_value at index {i}")
+                    continue
+            else:
+                result = numerator / denominator
+            
+            # Apply precision if specified
+            if precision is not None:
+                result = round(result, precision)
+                
+            results.append(result)
+            
+        except TypeError as e:
+            errors.append(f"Type error at index {i}: {str(e)}")
+        except Exception as e:
+            errors.append(f"Unexpected error at index {i}: {str(e)}")
+    
+    return results, errors</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q10">
+            <div class="difficulty medium">MEDIUM</div>
+            <div class="question-title">Question 10: Object-Oriented Design</div>
+            <div class="question-content">
+                <p>Design a class hierarchy for a student management system:</p>
+                
+                <p><strong>Requirements:</strong></p>
+                <ul>
+                    <li>Create a base <code>Person</code> class</li>
+                    <li>Create a <code>Student</code> class that inherits from <code>Person</code></li>
+                    <li>Include instance methods, class methods, static methods</li>
+                    <li>Demonstrate proper use of <code>super()</code></li>
+                    <li>Add magic methods like <code>__str__</code> or <code>__eq__</code></li>
+                </ul>
+                
+                <p><strong>Specific Features:</strong></p>
+                <ul>
+                    <li>Person: name, age, email</li>
+                    <li>Student: student_id, courses list, GPA calculation</li>
+                    <li>Class method to create student from string</li>
+                    <li>Static method to validate email format</li>
+                </ul>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution10')">Show Solution</button>
+            <div id="solution10" class="solution">
+                <h4>Solution:</h4>
+                <div class="code-block">import re
+
+
+class Person:
+    """Base class representing a person."""
+    
+    total_people = 0  # Class attribute
+    
+    def __init__(self, name: str, age: int, email: str):
+        if not self.is_valid_email(email):
+            raise ValueError(f"Invalid email format: {email}")
+            
+        self.name = name
+        self.age = age
+        self.email = email
+        Person.total_people += 1
+    
+    def get_info(self) -> str:
+        """Return basic information about the person."""
+        return f"Name: {self.name}, Age: {self.age}, Email: {self.email}"
+    
+    @staticmethod
+    def is_valid_email(email: str) -> bool:
+        """Validate email format using regex."""
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+        return re.match(pattern, email) is not None
+    
+    @classmethod
+    def get_total_people(cls) -> int:
+        """Return total number of people created."""
+        return cls.total_people
+    
+    def __str__(self) -> str:
+        return f"Person({self.name}, {self.age})"
+    
+    def __eq__(self, other) -> bool:
+        """Check equality based on email."""
+        if not isinstance(other, Person):
+            return False
+        return self.email == other.email
+
+
+class Student(Person):
+    """Student class that inherits from Person."""
+    
+    total_students = 0
+    grade_points = {'A+': 4.3, 'A': 4.0, 'A-': 3.7, 
+                   'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+                   'C+': 2.3, 'C': 2.0, 'C-': 1.7, 
+                   'D': 1.0, 'F': 0.0}
+    
+    def __init__(self, name: str, age: int, email: str, student_id: str):
+        super().__init__(name, age, email)  # Call parent constructor
+        self.student_id = student_id
+        self.courses = []  # List of (course, grade) tuples
+        Student.total_students += 1
+    
+    def add_course(self, course_name: str, grade: str) -> None:
+        """Add a course and grade to student's record."""
+        if grade not in self.grade_points:
+            raise ValueError(f"Invalid grade: {grade}")
+        self.courses.append((course_name, grade))
+    
+    def calculate_gpa(self) -> float:
+        """Calculate current GPA based on completed courses."""
+        if not self.courses:
+            return 0.0
+        
+        total_points = sum(self.grade_points[grade] for _, grade in self.courses)
+        return round(total_points / len(self.courses), 2)
+    
+    def get_info(self) -> str:
+        """Return detailed student information."""
+        base_info = super().get_info()
+        gpa = self.calculate_gpa()
+        course_count = len(self.courses)
+        return f"{base_info}, Student ID: {self.student_id}, Courses: {course_count}, GPA: {gpa}"
+    
+    @classmethod
+    def from_string(cls, data_string: str):
+        """Create Student from comma-separated string: name,age,email,student_id"""
+        parts = data_string.split(',')
+        if len(parts) != 4:
+            raise ValueError("String must have format: name,age,email,student_id")
+        
+        name, age_str, email, student_id = parts
+        age = int(age_str)
+        return cls(name.strip(), age, email.strip(), student_id.strip())
+    
+    def __str__(self) -> str:
+        return f"Student({self.name}, ID: {self.student_id}, GPA: {self.calculate_gpa()})"</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q11">
+            <div class="difficulty challenging">CHALLENGING</div>
+            <div class="question-title">Question 11: Advanced Python Features & Testing</div>
+            <div class="question-content">
+                <p>Create a <code>DataProcessor</code> class that demonstrates advanced Python concepts:</p>
+                
+                <p><strong>Requirements:</strong></p>
+                <ul>
+                    <li>Properties (getters/setters) with validation</li>
+                    <li>Generator method for memory-efficient processing</li>
+                    <li>Decorators for timing and validation</li>
+                    <li>Custom exceptions</li>
+                    <li>Comprehensive tests</li>
+                    <li>Demonstrate shallow vs deep copying</li>
+                </ul>
+                
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Process data in batches using generators</li>
+                    <li>batch_size property with validation</li>
+                    <li>Custom exceptions for different error types</li>
+                    <li>@timer decorator to log processing time</li>
+                </ul>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution11')">Show Solution</button>
+            <div id="solution11" class="solution">
+                <h4>Solution:</h4>
+                <div class="code-block">import time
+import copy
+from functools import wraps
+from typing import Generator, List, Dict, Any
+
+
+# Custom Exceptions
+class DataProcessingError(Exception):
+    """Base exception for data processing errors."""
+    pass
+
+
+class InvalidBatchSizeError(DataProcessingError):
+    """Raised when batch size is invalid."""
+    pass
+
+
+# Decorators
+def timer(func):
+    """Decorator to time function execution."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} executed in {end_time - start_time:.4f} seconds")
+        return result
+    return wrapper
+
+
+class DataProcessor:
+    """Advanced data processor with generators and properties."""
+    
+    def __init__(self, data: List[Dict[str, Any]], batch_size: int = 10):
+        self._data = data
+        self.batch_size = batch_size  # Will use setter validation
+        self._processed_count = 0
+    
+    @property
+    def batch_size(self) -> int:
+        """Get current batch size."""
+        return self._batch_size
+    
+    @batch_size.setter  
+    def batch_size(self, value: int) -> None:
+        """Set batch size with validation."""
+        if not isinstance(value, int) or value <= 0:
+            raise InvalidBatchSizeError(f"Batch size must be positive integer, got: {value}")
+        self._batch_size = value
+    
+    @property
+    def data_count(self) -> int:
+        """Get total number of data records."""
+        return len(self._data) if self._data else 0
+    
+    def batch_generator(self) -> Generator[List[Dict[str, Any]], None, None]:
+        """Generator that yields data in batches for memory-efficient processing."""
+        for i in range(0, len(self._data), self._batch_size):
+            batch = self._data[i:i + self._batch_size]
+            yield batch
+    
+    @timer
+    def process_data(self, transform_func=None) -> List[Dict[str, Any]]:
+        """Process all data using batches with optional transformation."""
+        if not self._data:
+            raise DataProcessingError("Cannot process empty dataset")
+        
+        processed_data = []
+        self._processed_count = 0
+        
+        for batch in self.batch_generator():
+            for record in batch:
+                if transform_func:
+                    processed_record = transform_func(record)
+                else:
+                    processed_record = record
+                processed_data.append(processed_record)
+                self._processed_count += 1
+        
+        return processed_data
+    
+    def demonstrate_copying(self):
+        """Demonstrate shallow vs deep copying behavior."""
+        print("=== Copying Demonstration ===")
+        
+        # Original data with nested structure
+        nested_data = [{'items': [1, 2, 3]}, {'items': [4, 5, 6]}]
+        
+        # Shallow copy
+        shallow_copy = copy.copy(nested_data)
+        
+        # Deep copy  
+        deep_copy = copy.deepcopy(nested_data)
+        
+        print("Before modification:")
+        print(f"Original: {nested_data}")
+        print(f"Shallow: {shallow_copy}")
+        print(f"Deep: {deep_copy}")
+        
+        # Modify nested structure in original
+        nested_data[0]['items'].append(999)
+        
+        print("\nAfter modifying nested structure:")
+        print(f"Original: {nested_data}")
+        print(f"Shallow: {shallow_copy}")   # Will change (shares nested objects)
+        print(f"Deep: {deep_copy}")        # Won't change (completely separate)</div>
+            </div>
+        </div>
+
+        <div class="question-card" id="q12">
+            <div class="difficulty challenging">CHALLENGING</div>
+            <div class="question-title">Question 12: Debugging & Integration Challenge</div>
+            <div class="question-content">
+                <p>Your team found this buggy code in a legacy system. It's supposed to be a grade management system, but has multiple issues. Work together to identify and fix all problems.</p>
+                
+                <div class="error-box">
+                    <strong>Buggy Code:</strong>
+                </div>
+                <div class="code-block">class gradeManager():
+    def __init__(self,student_grades=[]):
+        self.grades=student_grades
+        self.passing_grade=60
+    
+    def add_grade(self,student,grade):
+        if grade >= 0:
+            self.grades.append((student,grade))
+    
+    def get_average(self):
+        total=0
+        for student,grade in self.grades:
+            total=total+grade
+        return total/len(self.grades)
+    
+    def get_passing_students(self):
+        passing=[]
+        for student,grade in self.grades:
+            if grade>self.passing_grade:
+                passing.append(student)
+        return passing
+
+# Usage
+gm=gradeManager()
+gm.add_grade("Alice",85)
+gm.add_grade("Bob",-5)
+print("Average:",gm.get_average())</div>
+                
+                <p><strong>Your tasks:</strong></p>
+                <ul>
+                    <li>Identify all bugs (logical, runtime, and edge cases)</li>
+                    <li>Fix PEP 8 style violations</li>
+                    <li>Add proper error handling and validation</li>
+                    <li>Write comprehensive docstrings and tests</li>
+                    <li>Discuss the mutable default argument problem</li>
+                </ul>
+            </div>
+            
+            <button class="solution-toggle" onclick="toggleSolution('solution12')">Show Solution</button>
+            <div id="solution12" class="solution">
+                <h4>Solution:</h4>
+                <p><strong>Issues Identified:</strong></p>
+                <ol>
+                    <li><strong>Mutable default argument:</strong> <code>student_grades=[]</code> creates shared list</li>
+                    <li><strong>Class naming:</strong> Should be <code>GradeManager</code> (PascalCase)</li>
+                    <li><strong>Division by zero:</strong> No check for empty grades list</li>
+                    <li><strong>Logic error:</strong> Negative grades allowed, should validate range</li>
+                    <li><strong>Passing grade logic:</strong> Uses > instead of >= (typically 60+ is passing)</li>
+                    <li><strong>Style violations:</strong> Multiple PEP 8 spacing issues</li>
+                </ol>
+                
+                <p><strong>Fixed Code:</strong></p>
+                <div class="code-block">from typing import List, Tuple, Optional
+
+
+class InvalidGradeError(Exception):
+    """Raised when an invalid grade is provided."""
+    pass
+
+
+class GradeManager:
+    """Manages student grades with validation and analysis capabilities."""
+    
+    def __init__(self, student_grades: Optional[List[Tuple[str, float]]] = None, 
+                 passing_grade: float = 60.0):
+        """
+        Initialize GradeManager.
+        
+        Parameters
+        ----------
+        student_grades : List[Tuple[str, float]], optional
+            List of (student_name, grade) tuples, by default None
+        passing_grade : float, optional
+            Minimum grade considered passing, by default 60.0
+        """
+        # Fix mutable default argument issue
+        self.grades = student_grades if student_grades is not None else []
+        self.passing_grade = passing_grade
+        
+        # Validate initial grades
+        for student, grade in self.grades:
+            self._validate_grade(grade)
+    
+    def _validate_grade(self, grade: float) -> None:
+        """Validate that grade is in acceptable range."""
+        if not isinstance(grade, (int, float)):
+            raise InvalidGradeError(f"Grade must be a number, got {type(grade)}")
+        if not (0 <= grade <= 100):
+            raise InvalidGradeError(f"Grade must be between 0 and 100, got {grade}")
+    
+    def add_grade(self, student: str, grade: float) -> None:
+        """
+        Add a grade for a student.
+        
+        Parameters
+        ----------
+        student : str
+            Name of the student
+        grade : float
+            Grade to add (must be between 0 and 100)
+        """
+        if not isinstance(student, str) or not student.strip():
+            raise ValueError("Student name must be a non-empty string")
+        
+        self._validate_grade(grade)
+        self.grades.append((student, grade))
+    
+    def get_average(self) -> float:
+        """
+        Calculate the average grade.
+        
+        Returns
+        -------
+        float
+            Average grade rounded to 2 decimal places
+        """
+        if not self.grades:
+            raise ValueError("Cannot calculate average: no grades available")
+        
+        total = sum(grade for _, grade in self.grades)
+        return round(total / len(self.grades), 2)
+    
+    def get_passing_students(self) -> List[str]:
+        """
+        Get list of students with passing grades.
+        
+        Returns
+        -------
+        List[str]
+            Names of students with grades >= passing_grade
+        """
+        passing = []
+        for student, grade in self.grades:
+            if grade >= self.passing_grade:  # Fixed: was > instead of >=
+                passing.append(student)
+        return passing
+    
+    def __str__(self) -> str:
+        """String representation of GradeManager."""
+        if not self.grades:
+            return "GradeManager: No grades recorded"
+        
+        avg = self.get_average() if self.grades else 0
+        passing_count = len(self.get_passing_students())
+        return (f"GradeManager: {len(self.grades)} students, "
+                f"Average: {avg}, Passing: {passing_count}")
+
+
+# Test the fixed implementation
+def test_grade_manager():
+    """Test the fixed GradeManager."""
+    
+    # Test normal functionality
+    gm = GradeManager()
+    gm.add_grade("Alice", 85)
+    gm.add_grade("Bob", 75)
+    gm.add_grade("Charlie", 55)  # Failing grade
+    
+    print("Grade Manager:", gm)
+    print("Average:", gm.get_average())
+    print("Passing students:", gm.get_passing_students())
+    
+    # Test error handling
+    try:
+        gm.add_grade("Invalid", -5)
+    except InvalidGradeError as e:
+        print("Caught expected error:", e)
+    
+    # Test mutable default argument fix
+    gm1 = GradeManager()
+    gm2 = GradeManager()
+    gm1.add_grade("Student1", 80)
+    gm2.add_grade("Student2", 90)
+    
+    print("GM1 grades:", len(gm1.grades))  # Should be 1
+    print("GM2 grades:", len(gm2.grades))  # Should be 1
+
+
+test_grade_manager()</div>
+                
+                <p><strong>Key Debugging Lessons:</strong></p>
+                <ul>
+                    <li><strong>Mutable Default Arguments:</strong> Never use [] or {} as default parameters</li>
+                    <li><strong>Edge Case Testing:</strong> Always test empty inputs, boundary conditions</li>
+                    <li><strong>Input Validation:</strong> Validate all inputs at entry points</li>
+                    <li><strong>Boundary Logic:</strong> Be careful with > vs >= comparisons</li>
+                    <li><strong>Comprehensive Testing:</strong> Test normal cases, edge cases, and error conditions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 25px; background: #f8f9fa; border-radius: 10px;">
+            <h3>Complete Study Social Wrap-up</h3>
+            <p><strong>After tackling all 12 questions across both courses, reflect as a team:</strong></p>
+            
+            <div style="display: flex; gap: 20px; margin-top: 20px;">
+                <div style="flex: 1; text-align: left; background: #e8f5e8; padding: 15px; border-radius: 8px;">
+                    <h4 style="color: #27ae60; margin-top: 0;">DSCI 521 Skills</h4>
+                    <ul style="margin: 0; font-size: 0.95em;">
+                        <li>How has your approach to project organization changed?</li>
+                        <li>What environment management practices will you adopt?</li>
+                        <li>Which regex patterns do you find most useful?</li>
+                        <li>How will you apply these skills to real projects?</li>
+                    </ul>
+                </div>
+                
+                <div style="flex: 1; text-align: left; background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                    <h4 style="color: #1976d2; margin-top: 0;">DSCI 511 Skills</h4>
+                    <ul style="margin: 0; font-size: 0.95em;">
+                        <li>What testing strategies will you incorporate?</li>
+                        <li>When would you choose OOP vs functional approaches?</li>
+                        <li>Which code style rules matter most to you?</li>
+                        <li>How do you plan to improve your debugging process?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 25px; padding: 20px; background: #fff3cd; border-radius: 8px;">
+                <h4 style="color: #856404; margin-top: 0;">Integration & Next Steps</h4>
+                <ul style="text-align: left; max-width: 800px; margin: 0 auto; font-size: 0.95em;">
+                    <li><strong>Cross-Course Connections:</strong> How do these tools work together in data science workflows?</li>
+                    <li><strong>Real-World Application:</strong> Which concepts will be most valuable in your capstone projects?</li>
+                    <li><strong>Continuous Learning:</strong> What areas need more practice or deeper exploration?</li>
+                    <li><strong>Team Collaboration:</strong> How can you apply these practices when working with others?</li>
+                    <li><strong>Professional Development:</strong> Which skills differentiate junior from senior data scientists?</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #f0f8f0; border-radius: 8px; border-left: 4px solid #4caf50;">
+                <strong>Action Items:</strong> Each team member should identify 2-3 specific concepts to practice further and one way to implement better practices in current coursework.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            const button = solution.previousElementSibling;
+            
+            if (solution.classList.contains('show')) {
+                solution.classList.remove('show');
+                button.textContent = 'Show Solution';
+                button.style.background = '#3498db';
+            } else {
+                solution.classList.add('show');
+                button.textContent = 'Hide Solution';
+                button.style.background = '#e74c3c';
+            }
+        }
+
+        // Enhanced interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionCards = document.querySelectorAll('.question-card');
+            questionCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                });
+            });
+            
+            // Add copy functionality to code blocks
+            const codeBlocks = document.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => {
+                block.addEventListener('dblclick', function() {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = this.textContent;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    
+                    // Visual feedback
+                    const originalBg = this.style.backgroundColor;
+                    this.style.backgroundColor = '#d5f4e6';
+                    setTimeout(() => {
+                        this.style.backgroundColor = originalBg;
+                    }, 300);
+                });
+                
+                block.setAttribute('title', 'Double-click to copy code');
+                block.style.cursor = 'copy';
+            });
+            
+            // Smooth scrolling for table of contents
+            const tocLinks = document.querySelectorAll('.toc a');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Progress indicator
+            let questionsAnswered = 0;
+            const totalQuestions = 12;
+            
+            // Add progress tracking
+            const toggles = document.querySelectorAll('.solution-toggle');
+            const progressDiv = document.createElement('div');
+            progressDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(52, 152, 219, 0.9);
+                color: white;
+                padding: 10px 15px;
+                border-radius: 20px;
+                font-size: 0.9em;
+                font-weight: bold;
+                z-index: 1000;
+                transition: all 0.3s ease;
+            `;
+            progressDiv.textContent = `Progress: 0/${totalQuestions}`;
+            document.body.appendChild(progressDiv);
+            
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    if (this.textContent === 'Show Solution') {
+                        questionsAnswered++;
+                    } else {
+                        questionsAnswered--;
+                    }
+                    progressDiv.textContent = `Progress: ${questionsAnswered}/${totalQuestions}`;
+                    
+                    // Celebration when all complete
+                    if (questionsAnswered === totalQuestions) {
+                        progressDiv.textContent = '🎉 All Complete!';
+                        progressDiv.style.background = 'rgba(46, 204, 113, 0.9)';
+                    } else {
+                        progressDiv.style.background = 'rgba(52, 152, 219, 0.9)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
