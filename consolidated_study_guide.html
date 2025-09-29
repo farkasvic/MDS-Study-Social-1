@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDS Study Social - Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            overflow-x: auto;
+        }
+        
+        .nav-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1em;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .nav-tab:hover {
+            background: #e9ecef;
+            color: #495057;
+        }
+        
+        .nav-tab.active {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            background: white;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .intro {
+            background: #e6fffa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #38b2ac;
+        }
+        
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .easy { background: #d4edda; color: #155724; }
+        .medium { background: #fff3cd; color: #856404; }
+        .hard { background: #f8d7da; color: #721c24; }
+        
+        .question-card h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .question-text {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .question-text ul, .question-text ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .question-text li {
+            margin: 5px 0;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #68d391;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .hint-button, .solution-button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            margin-right: 10px;
+            color: white;
+        }
+        
+        .hint-button {
+            background: #667eea;
+        }
+        
+        .hint-button:hover {
+            background: #5568d3;
+        }
+        
+        .solution-button {
+            background: #48bb78;
+        }
+        
+        .solution-button:hover {
+            background: #38a169;
+        }
+        
+        .hint-box, .solution-box {
+            background: #edf2f7;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .solution-box {
+            border-left-color: #48bb78;
+        }
+        
+        .hint-box.show, .solution-box.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            right: 20px;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 0 0 10px 10px;
+            font-weight: bold;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .nav-tab {
+                padding: 12px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress">Progress: 0/18</div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>MDS Study Social</h1>
+            <p>Collaborative Study Questions for DSCI 523, 551, 521, and 511</p>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('r-programming')">R Programming</button>
+            <button class="nav-tab" onclick="showSection('statistics')">Statistics</button>
+            <button class="nav-tab" onclick="showSection('computing')">Computing</button>
+            <button class="nav-tab" onclick="showSection('python')">Python</button>
+        </div>
+        
+        <div class="content">
+            <!-- R PROGRAMMING SECTION -->
+            <div id="r-programming" class="section active">
+                <div class="intro">
+                    <h2>DSCI 523: R Programming for Data Manipulation</h2>
+                    <p>Topics: Functions, Testing, Tidy Evaluation, Mapping, Nested Data Frames</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 1: Function Testing Basics</h3>
+                    <div class="question-text">
+                        <p>Write a function called <code>celsius_to_kelvin()</code> that converts temperatures from Celsius to Kelvin (add 273.15). Then write TWO tests using testthat to verify:</p>
+                        <ol>
+                            <li>Water freezes at 273.15 K (0°C)</li>
+                            <li>Water boils at 373.15 K (100°C)</li>
+                        </ol>
+                    </div>
+                    <button class="hint-button" onclick="toggleHint('r1')">Show Hint</button>
+                    <button class="solution-button" onclick="toggleSolution('r1')">Show Solution</button>
+                    <div class="hint-box" id="hint-r1">
+                        <strong>Hint:</strong> Use <code>expect_equal()</code> in your tests. Remember the formula: K = C + 273.15
+                    </div>
+                    <div class="solution-box" id="solution-r1">
+                        <strong>Solution:</strong>
+                        <div class="code-block">celsius_to_kelvin <- function(temp) {
+  temp + 273.15
+}
+
+test_that("Water freezes at 273.15 K", {
+  expect_equal(celsius_to_kelvin(0), 273.15)
+})
+
+test_that("Water boils at 373.15 K", {
+  expect_equal(celsius_to_kelvin(100), 373.15)
+})</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 2: Mapping Over Columns</h3>
+                    <div class="question-text">
+                        <p>Given a data frame with missing values, use <code>map_dbl()</code> to calculate the mean of each column:</p>
+                        <div class="code-block">df <- tibble(
+  x = c(1, 2, NA, 4),
+  y = c(5, NA, 7, 8),
+  z = c(9, 10, 11, NA)
+)</div>
+                    </div>
+                    <button class="hint-button" onclick="toggleHint('r2')">Show Hint</button>
+                    <button class="solution-button" onclick="toggleSolution('r2')">Show Solution</button>
+                    <div class="hint-box" id="hint-r2">
+                        <strong>Hint:</strong> Pass <code>na.rm = TRUE</code> as an additional argument to <code>map_dbl()</code>
+                    </div>
+                    <div class="solution-box" id="solution-r2">
+                        <strong>Solution:</strong>
+                        <div class="code-block">map_dbl(df, mean, na.rm = TRUE)</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 3: Tidy Evaluation</h3>
+                    <div class="question-text">
+                        <p>Create a function <code>summarize_by_group()</code> that takes a data frame, groups by one column, and calculates mean and standard deviation of another column. Use the embrace operator <code>{{}}</code>.</p>
+                    </div>
+                    <button class="hint-button" onclick="toggleHint('r3')">Show Hint</button>
+                    <button class="solution-button" onclick="toggleSolution('r3')">Show Solution</button>
+                    <div class="hint-box" id="hint-r3">
+                        <strong>Hint:</strong> Use <code>group_by({{ group_col }})</code> and <code>summarise()</code>
+                    </div>
+                    <div class="solution-box" id="solution-r3">
+                        <strong>Solution:</strong>
+                        <div class="code-block">summarize_by_group <- function(data, group_col, summary_col) {
+  data %>%
+    group_by({{ group_col }}) %>%
+    summarise(
+      mean_val = mean({{ summary_col }}),
+      sd_val = sd({{ summary_col }})
+    )
+}</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 4: Case When</h3>
+                    <div class="question-text">
+                        <p>Use <code>case_when()</code> to standardize country codes in this dataset:</p>
+                        <div class="code-block">messy_data <- tibble(
+  country = c("USA", "US", "United States", "CAN", "Canada", "MEX"),
+  value = c(100, 150, 200, 80, 90, 60)
+)</div>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('r4')">Show Solution</button>
+                    <div class="solution-box" id="solution-r4">
+                        <strong>Solution:</strong>
+                        <div class="code-block">messy_data %>%
+  mutate(
+    country_clean = case_when(
+      country %in% c("USA", "US", "United States") ~ "United States",
+      country %in% c("CAN", "Canada") ~ "Canada",
+      country == "MEX" ~ "Mexico",
+      TRUE ~ country
+    )
+  )</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 5: Nested Data Frames</h3>
+                    <div class="question-text">
+                        <p>Using gapminder, create a nested data frame by continent, fit a linear model for each, and extract R-squared values.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('r5')">Show Solution</button>
+                    <div class="solution-box" id="solution-r5">
+                        <strong>Solution:</strong>
+                        <div class="code-block">gapminder %>%
+  group_by(continent) %>%
+  nest() %>%
+  mutate(
+    model = map(data, ~lm(lifeExp ~ year, data = .)),
+    r_squared = map_dbl(model, ~summary(.)$r.squared)
+  ) %>%
+  select(continent, r_squared) %>%
+  arrange(desc(r_squared))</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 6: Defensive Programming</h3>
+                    <div class="question-text">
+                        <p>Write <code>safe_mutate_ratio()</code> that creates a ratio column with validation, using the walrus operator <code>:=</code> for dynamic naming.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('r6')">Show Solution</button>
+                    <div class="solution-box" id="solution-r6">
+                        <strong>Solution:</strong>
+                        <div class="code-block">safe_mutate_ratio <- function(data, numerator_col, 
+                               denominator_col, new_col_name) {
+  if (!is.numeric(data %>% pull({{ numerator_col }}))) {
+    stop("numerator_col must be numeric")
+  }
+  
+  if (!is.numeric(data %>% pull({{ denominator_col }}))) {
+    stop("denominator_col must be numeric")
+  }
+  
+  data %>%
+    mutate({{ new_col_name }} := 
+             {{ numerator_col }} / {{ denominator_col }})
+}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STATISTICS SECTION -->
+            <div id="statistics" class="section">
+                <div class="intro">
+                    <h2>DSCI 551: Statistics for Data Science</h2>
+                    <p>Topics: Continuous Distributions, MLE, Simulation</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 1: Distribution Matching</h3>
+                    <div class="question-text">
+                        <p>Match scenarios to distributions:</p>
+                        <ul>
+                            <li>Coffee shop customer arrivals (memoryless)</li>
+                            <li>Proportion of defective items</li>
+                            <li>Website load times (right-skewed)</li>
+                            <li>Component failures with increasing failure rate</li>
+                        </ul>
+                        <p>Distributions: Exponential, Beta, Log-Normal, Weibull</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('s1')">Show Solution</button>
+                    <div class="solution-box" id="solution-s1">
+                        <strong>Solution:</strong>
+                        <ul>
+                            <li>Coffee shop → Exponential (memoryless property)</li>
+                            <li>Proportions → Beta (bounded 0-1)</li>
+                            <li>Load times → Log-Normal (positive, right-skewed)</li>
+                            <li>Failures → Weibull (increasing hazard rate)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 2: Simulation Bug Fix</h3>
+                    <div class="question-text">
+                        <p>Find and fix the bug in this exponential simulation:</p>
+                        <div class="code-block">set.seed(42)
+wait_times <- rexp(n = 1000, rate = 5)
+mean_wait <- mean(wait_times)
+# Goal: mean should be 5 minutes</div>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('s2')">Show Solution</button>
+                    <div class="solution-box" id="solution-s2">
+                        <strong>Solution:</strong>
+                        <div class="code-block"># Bug: rate should be 1/5 for mean = 5
+wait_times <- rexp(n = 1000, rate = 1/5)
+# Or: rate = 0.2</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 3: MLE for Exponential</h3>
+                    <div class="question-text">
+                        <p>Failure times: [245, 356, 123, 445, 289, 167, 398, 234, 312, 278]</p>
+                        <p>Calculate MLE for β (mean parameter) analytically and verify with code.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('s3')">Show Solution</button>
+                    <div class="solution-box" id="solution-s3">
+                        <strong>Solution:</strong>
+                        <div class="code-block">data <- c(245, 356, 123, 445, 289, 167, 398, 234, 312, 278)
+beta_hat <- mean(data)
+print(paste("MLE β̂ =", round(beta_hat, 2), "hours"))
+# Result: 284.7 hours</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 4: Multi-Stage Simulation</h3>
+                    <div class="question-text">
+                        <p>Food delivery: Orders ~ Poisson(50), Prep ~ Exp(20), Delivery ~ Log-Normal(3, 0.5)</p>
+                        <p>Simulate 1000 days and estimate P(total time > 2000 min)</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('s4')">Show Solution</button>
+                    <div class="solution-box" id="solution-s4">
+                        <strong>Solution:</strong>
+                        <div class="code-block">simulate_day <- function() {
+  n_orders <- rpois(1, 50)
+  prep_times <- rexp(n_orders, rate = 1/20)
+  delivery_times <- rlnorm(n_orders, 3, sqrt(0.5))
+  sum(prep_times + delivery_times)
+}
+
+results <- replicate(1000, simulate_day())
+prob_exceed <- mean(results > 2000)</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 5: Compound Process</h3>
+                    <div class="question-text">
+                        <p>Network packets: Bursts ~ Poisson(8), Packets/burst ~ Geometric(0.3), Size ~ Exp(150)</p>
+                        <p>Derive expected data per minute analytically, then simulate to verify.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('s5')">Show Solution</button>
+                    <div class="solution-box" id="solution-s5">
+                        <strong>Solution:</strong>
+                        <div class="code-block"># Analytical: E[Y] = E[N] × E[M] × E[X]
+# = 8 × (1/0.3) × 150 = 4000 bytes/min
+
+# Simulation verification
+simulate_minute <- function() {
+  n_bursts <- rpois(1, 8)
+  total <- 0
+  for(i in 1:n_bursts) {
+    n_packets <- rgeom(1, 0.3) + 1
+    total <- total + sum(rexp(n_packets, 1/150))
+  }
+  total
+}
+
+mean(replicate(10000, simulate_minute()))</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 6: Model Selection</h3>
+                    <div class="question-text">
+                        <p>Fit Exponential, Log-Normal, Gamma, and Weibull to recovery time data. Use AIC and simulation-based goodness-of-fit to select best model.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('s6')">Show Solution</button>
+                    <div class="solution-box" id="solution-s6">
+                        <strong>Approach:</strong>
+                        <ol>
+                            <li>Fit each model using MLE</li>
+                            <li>Calculate log-likelihood for each</li>
+                            <li>Compute AIC = -2*log_lik + 2*k</li>
+                            <li>Select model with lowest AIC</li>
+                            <li>Validate with KS test simulation</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- COMPUTING SECTION -->
+            <div id="computing" class="section">
+                <div class="intro">
+                    <h2>DSCI 521: Computing Platforms</h2>
+                    <p>Topics: Environments, Project Organization, RegEx</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 1: Conda Environment</h3>
+                    <div class="question-text">
+                        <p>Create environment "data-analysis" with Python 3.11 and pandas 2.1.0 from conda-forge.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('c1')">Show Solution</button>
+                    <div class="solution-box" id="solution-c1">
+                        <strong>Solution:</strong>
+                        <div class="code-block">conda create -n data-analysis python=3.11 pandas=2.1.0 -c conda-forge
+conda activate data-analysis
+conda list pandas  # verify</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 2: File Naming</h3>
+                    <div class="question-text">
+                        <p>Fix these filenames: "Final Report.docx", "data analysis (1).py", "Figure1.png"</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('c2')">Show Solution</button>
+                    <div class="solution-box" id="solution-c2">
+                        <strong>Solution:</strong>
+                        <div class="code-block">2024-01-15_final-report_survey-analysis.docx
+01_data-analysis_exploratory.py
+fig01_survey-results_age-distribution.png</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 3: Environment Sharing</h3>
+                    <div class="question-text">
+                        <p>What issues exist in an environment.yaml that doesn't specify versions for pandas, matplotlib, jupyter?</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('c3')">Show Solution</button>
+                    <div class="solution-box" id="solution-c3">
+                        <strong>Issues:</strong>
+                        <ul>
+                            <li>Not reproducible across time</li>
+                            <li>Different team members get different versions</li>
+                            <li>Cross-platform compatibility problems</li>
+                            <li>Fix: Use <code>--from-history</code> and specify versions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 4: RegEx Patterns</h3>
+                    <div class="question-text">
+                        <p>Write regex to match: valid emails, phone numbers (multiple formats), ISO dates</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('c4')">Show Solution</button>
+                    <div class="solution-box" id="solution-c4">
+                        <strong>Solution:</strong>
+                        <div class="code-block"># Email
+[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}
+
+# Phone
+(\([0-9]{3}\)\s?|[0-9]{3}[-.]?)[0-9]{3}[-.]?[0-9]{4}
+
+# ISO Date
+[0-9]{4}-[0-9]{2}-[0-9]{2}</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 5: Project Structure</h3>
+                    <div class="question-text">
+                        <p>Design complete directory structure for a project with Python scraping, R analysis, and shared data.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('c5')">Show Solution</button>
+                    <div class="solution-box" id="solution-c5">
+                        <strong>Structure:</strong>
+                        <div class="code-block">project/
+├── README.md
+├── environment.yaml
+├── data/
+│   ├── raw/      (read-only)
+│   └── processed/
+├── src/
+│   ├── python/
+│   └── r/
+├── reports/
+│   ├── notebooks/
+│   └── figures/
+└── tests/</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 6: File Reorganization</h3>
+                    <div class="question-text">
+                        <p>Write regex to extract year, month, and file type from inconsistent filenames. Create systematic renaming scheme.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('c6')">Show Solution</button>
+                    <div class="solution-box" id="solution-c6">
+                        <strong>Patterns:</strong>
+                        <div class="code-block"># Year
+[0-9]{4}
+
+# Month
+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)
+
+# File type
+(?i)(survey|experiment|analysis|figure)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PYTHON SECTION -->
+            <div id="python" class="section">
+                <div class="intro">
+                    <h2>DSCI 511: Python Programming</h2>
+                    <p>Topics: Functions, Testing, Classes, Style</p>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 1: Function with Tests</h3>
+                    <div class="question-text">
+                        <p>Write <code>normalize_scores()</code> with NumPy-style docstring and 3 unit tests (AAA pattern).</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('p1')">Show Solution</button>
+                    <div class="solution-box" id="solution-p1">
+                        <strong>Solution:</strong>
+                        <div class="code-block">def normalize_scores(scores: list) -> list:
+    """Normalize scores to 0-100 scale."""
+    if not scores:
+        return []
+    min_s, max_s = min(scores), max(scores)
+    if max_s == min_s:
+        return [50.0] * len(scores)
+    return [100 * (s - min_s) / (max_s - min_s) 
+            for s in scores]
+
+# Test
+assert normalize_scores([50, 75, 100]) == [0.0, 50.0, 100.0]</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty easy">EASY</span>
+                    <h3>Question 2: PEP 8 Violations</h3>
+                    <div class="question-text">
+                        <p>Identify and fix PEP 8 violations in this code:</p>
+                        <div class="code-block">def calculateStatistics(data_list,return_median=True):
+    mean=sum(data_list)/len(data_list)
+    return{'mean':mean}</div>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('p2')">Show Solution</button>
+                    <div class="solution-box" id="solution-p2">
+                        <strong>Solution:</strong>
+                        <div class="code-block">def calculate_statistics(data_list, return_median=True):
+    """Calculate basic statistics."""
+    mean = sum(data_list) / len(data_list)
+    return {'mean': mean}</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 3: Advanced Functions</h3>
+                    <div class="question-text">
+                        <p>Create <code>safe_divide_lists()</code> with error handling, *args/**kwargs, and multiple return values.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('p3')">Show Solution</button>
+                    <div class="solution-box" id="solution-p3">
+                        <strong>Solution:</strong>
+                        <div class="code-block">def safe_divide_lists(numerators, denominators, 
+                      default_value='skip', **kwargs):
+    results, errors = [], []
+    for i, (n, d) in enumerate(zip(numerators, denominators)):
+        try:
+            if d == 0:
+                if default_value == 'skip':
+                    errors.append(f"Div by zero at {i}")
+                    continue
+                results.append(default_value)
+            else:
+                results.append(n / d)
+        except Exception as e:
+            errors.append(f"Error at {i}: {e}")
+    return results, errors</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty medium">MEDIUM</span>
+                    <h3>Question 4: Class Design</h3>
+                    <div class="question-text">
+                        <p>Create Person and Student classes with inheritance, class methods, static methods, and magic methods.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('p4')">Show Solution</button>
+                    <div class="solution-box" id="solution-p4">
+                        <strong>Solution:</strong>
+                        <div class="code-block">class Person:
+    def __init__(self, name, age, email):
+        self.name = name
+        self.age = age
+        self.email = email
+    
+    @staticmethod
+    def is_valid_email(email):
+        return '@' in email and '.' in email
+    
+    def __str__(self):
+        return f"Person({self.name}, {self.age})"
+
+class Student(Person):
+    def __init__(self, name, age, email, student_id):
+        super().__init__(name, age, email)
+        self.student_id = student_id
+        self.courses = []
+    
+    @classmethod
+    def from_string(cls, data_string):
+        name, age, email, sid = data_string.split(',')
+        return cls(name, int(age), email, sid)</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 5: Advanced Features</h3>
+                    <div class="question-text">
+                        <p>Create DataProcessor class with properties, generators, decorators, and custom exceptions.</p>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('p5')">Show Solution</button>
+                    <div class="solution-box" id="solution-p5">
+                        <strong>Solution:</strong>
+                        <div class="code-block">class DataProcessingError(Exception):
+    pass
+
+class DataProcessor:
+    def __init__(self, data, batch_size=10):
+        self._data = data
+        self.batch_size = batch_size
+    
+    @property
+    def batch_size(self):
+        return self._batch_size
+    
+    @batch_size.setter
+    def batch_size(self, value):
+        if value <= 0:
+            raise DataProcessingError("Batch size must be positive")
+        self._batch_size = value
+    
+    def batch_generator(self):
+        for i in range(0, len(self._data), self._batch_size):
+            yield self._data[i:i + self._batch_size]</div>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <span class="difficulty hard">CHALLENGING</span>
+                    <h3>Question 6: Debugging Challenge</h3>
+                    <div class="question-text">
+                        <p>Fix the mutable default argument bug and other issues:</p>
+                        <div class="code-block">class GradeManager():
+    def __init__(self, grades=[]):
+        self.grades = grades</div>
+                    </div>
+                    <button class="solution-button" onclick="toggleSolution('p6')">Show Solution</button>
+                    <div class="solution-box" id="solution-p6">
+                        <strong>Solution:</strong>
+                        <div class="code-block">class GradeManager:
+    def __init__(self, grades=None):
+        self.grades = grades if grades is not None else []
+    
+    # This prevents the shared mutable default problem</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let answeredQuestions = new Set();
+        const totalQuestions = 18;
+        
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Mark clicked tab as active
+            event.target.classList.add('active');
+        }
+        
+        function toggleHint(id) {
+            const hint = document.getElementById('hint-' + id);
+            hint.classList.toggle('show');
+        }
+        
+        function toggleSolution(id) {
+            const solution = document.getElementById('solution-' + id);
+            const wasShown = solution.classList.contains('show');
+            
+            solution.classList.toggle('show');
+            
+            // Track progress
+            if (!wasShown) {
+                answeredQuestions.add(id);
+            } else {
+                answeredQuestions.delete(id);
+            }
+            
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const progress = document.getElementById('progress');
+            progress.textContent = `Progress: ${answeredQuestions.size}/${totalQuestions}`;
+            
+            if (answeredQuestions.size === totalQuestions) {
+                progress.style.background = 'rgba(72, 187, 120, 0.9)';
+                progress.textContent = 'Complete!';
+            } else {
+                progress.style.background = 'rgba(102, 126, 234, 0.9)';
+            }
+        }
+    </script>
+</body>
+</html>
+                
